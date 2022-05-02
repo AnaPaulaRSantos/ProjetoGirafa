@@ -41,10 +41,12 @@
 			top: 40%;
 			transform: translate(-36%, 2%);
 
-			}
-		main   {
-
-			
+		}
+		
+		
+		
+		main {
+				
 		float: left;
 		display: flex;
 		background-color: white;
@@ -87,8 +89,72 @@
 
 		footer{
 			margin-top: -4px;
+	}
 		
 	</style>
+
+	<script>
+       var imgs=[];
+        var slider;
+        var imgAtual;
+        var maxImg;
+        var tmp;
+        var tempoTroca;
+        var vtempo;
+        var vbarra;
+
+        
+
+        function preCarreg(){
+                var s=1;
+                for(var i=0; i<5; i++){;
+                imgs[i]= new Image();
+                imgs[i].src="imgs/girafa"+s+".png";
+                s++;
+            }
+        }
+        
+        function carregarImg(img){
+            slider.style.backgroundImage= "url('"+imgs[img].src+"')";
+        }
+
+        function inicia(){
+            preCarreg();
+            imgAtual=0;
+            maxImg=imgs.length-1;
+            slider=document.getElementById("dvslider");
+            vbarra=document.getElementById("dvbarra");
+            carregarImg(imgAtual);
+            tempoTroca=0;
+            anima();
+        }
+        
+        function troca(dir){
+            tempoTroca=0;
+            imgAtual+=dir;
+            if(imgAtual>maxImg){
+                imgAtual=0;
+            }else if(imgAtual<0){
+                imgAtual=maxImg;
+            }
+            
+            carregarImg(imgAtual);
+        }
+        function anima(){
+            tempoTroca++;
+            if(tempoTroca>=500){
+                tempoTroca=0;
+                troca(1);
+            }
+            vtempo=tempoTroca/5;
+            vbarra.style.width=vtempo+ "%";
+            window.requestAnimationFrame(anima);
+        }
+
+        window.addEventListener("load", inicia);
+
+
+	</script>
 
 </head>
 <body>
@@ -111,6 +177,17 @@
 
 
 </body>
+    <div id="dvslider">
+    <button class="btSlider" onclick="troca(-1)"> < </button>
+    <div id="dvload">
+        <div id="dvbarra"></div>
+    </div>
+    <button class="btSlider" onclick="troca(1)" > > </button>
+    
+</div>
+
+
+
  		<div class="voltarapaginicial">
 			<p>Para voltar para a página Inicial, clique <a href="index.html">AQUI</a></p>
 		</div>
