@@ -21,10 +21,10 @@
 		}
 		
 		body {
-			 background-color:#E6D3E1,
+			 background-color:#cc39a5,
 			font-family: Arial;
-			font-size: 15px;
-			color: yellow;
+			font-size: 25px;
+			
 		}
 			
 
@@ -34,17 +34,119 @@
 			color:#C61C64 ;}
 			
 		#conteúdo{
-			position:absolute ;
-			height: 1410px;
-			width: 780px;
-			left: 17%;
-			top: 40%;
+			
+			
+			height: 1000px;
+			width: 900px;
+			margin-top: 20px;
+			margin-left: -250px;
+
 			transform: translate(-36%, 2%);
 
-			}
+		}
 
-		
+		#banner{
+			width: 900px;
+			height: 600px;
+			margin-right: 20px;
+			margin-top: -650px;
+			background-color: white;
+			float: right;
+
+		}
+
+		/*.btslider{
+			background-color: rgba(0,0,0,0.4);
+			height: 30%;
+			color: white;
+			cursor: pointer;
+			outline: none;
+			margin: 10px;
+			border: none;	
+			align-items: center;
+		}
+
+		#dvload{
+			width: 100%;
+			height: 5px;
+			margin-top: 25%;
+			border: 1px solid rgba(255,255,255,0.3);
+		}
+		#dvbarra{
+			width: 0%;
+			height: 100%;
+			background-color: white;
+
+
+
+		}*/
+
 	</style>
+
+
+	<script>
+		var imgs=[];
+		var slider;
+		var imgAtual;
+		var maxImg;
+		var tmp;
+		var tempoTroca;
+		var vtempo;
+		var vload;
+
+
+
+
+		function preCarreg(){
+				var s=1;
+				for(var i=0;i<3;i++){
+				imgs[i]=new Image ();
+				imgs[i].src="banner/bannergirafa"+s+".png";
+				s++;
+			}
+		}
+		function carregarImg(img){
+			slider.style.backgroundImage="url('"+imgs[img].src+"')";
+
+		}
+		function inicia(){
+			preCarreg();
+			imgAtual=0;
+			maxImg= imgs.length-1;
+			slider=document.getElementById("banner");
+			carregarImg(imgAtual);
+			tempoTroca=0;
+			anima();
+			
+
+		}
+		function troca(dir){
+			tempoTroca=0;
+			imgAtual+=dir;
+			if(imgAtual>maxImg){
+				imgAtual=0;
+			}else if(imgAtual<0){
+				imgAtual=maxImg;
+			}
+			carregarImg(imgAtual);
+
+		}
+		function anima(){
+			tempoTroca++;
+			if(tempoTroca>=200){
+				tempoTroca=0;
+				troca(1);
+			}
+			window.requestAnimationFrame(anima);
+		}
+		window.addEventListener("load", inicia);
+
+
+
+
+	</script>
+
+	
 
 </head>
 <body>
@@ -65,40 +167,51 @@
 		 
 		
 	
-		<audio src="midia/Baila.mp3" controls autoplay loop></audio>
+		<!--<audio src="midia/Baila.mp3" controls autoplay loop></audio> -->
 		
 	<main id="conteúdo">
 		<!-- estilo inline do css quando faz dentro do index -->
 		<h3> O que é uma girafa? <br>
 		<p> As girafas são os únicos membros de seu gênero e, juntas com os ocapis, formam a família Giraffidae. <br>Atualmente estão listadas <span class="destaque">quatro espécies de girafa existentes</span> e nove já extintas, diferenciadas também pela distribuição geográfica e pelo padrão das manchas. <br>Essas várias subespécies de girafas agora habitam as terras secas ao sul do Saara. As girafas se distribuem em dois grupos: girafa-do-norte que são tricornes, isto é, com um corno nasal interocular e dois frontoparietais, apresentando pelagem predominantemente reticulada; e girafa-do-sul, sem corno nasal e a pelagem tem predominantemente malhas irregulares.<br><br>
 
- <span class="destaque">Os machos chegam a 5 metros de altura</span> e com suas línguas preênseis que alcançam até 50 centímetros são capazes de pegar as folhas de acácias, por entre pontiagudos espinhos nos altos dos galhos, que são sua principal fonte de alimentação. Elas são capazes de comer as folhas das árvores até 6 metros de altura. Para poderem pastar, têm de afastar uma da outra as pernas dianteiras. Devido ao baixo teor nutritivo das folhas, as girafas precisam comer grandes quantidades e <span class="destaque">passam quase 20 horas por dia comendo  </span>. <br> 
-O comprimento do corpo pode ultrapassar os 2,25 metros e ainda possui uma cauda com oitenta centímetros de comprimento, não contando com o pincel final. <span class="destaque"> O seu peso pode ultrapassar os 500 quilogramas</span> Apesar do seu tamanho, <span class="destaque">a girafa pode atingir a velocidade de 56 km/h,</span> suficiente para fugir de seus predadores </p></h3>
-
-	</main>
-		<br>			
-		
-	</div>
-
+ 	<span class="destaque">Os machos chegam a 5 metros de altura</span> e com suas línguas preênseis que alcançam até 50 centímetros são capazes de pegar as folhas de acácias, por entre pontiagudos espinhos nos altos dos galhos, que são sua principal fonte de alimentação. Elas são capazes de comer as folhas das árvores até 6 metros de altura. Para poderem pastar, têm de afastar uma da outra as pernas dianteiras. Devido ao baixo teor nutritivo das folhas, as girafas precisam comer grandes quantidades e <span class="destaque">passam quase 20 horas por dia comendo  </span>. <br> 
+	O comprimento do corpo pode ultrapassar os 2,25 metros e ainda possui uma cauda com oitenta centímetros de comprimento, não contando com o pincel final. <span class="destaque"> O seu peso pode ultrapassar os 500 quilogramas</span> Apesar do seu tamanho, <span class="destaque">a girafa pode atingir a velocidade de 56 km/h,</span> suficiente para fugir de seus predadores </p></h3>
+    	
 	
-		
 		<div class="center">
 			
 			<img src="https://static.biologianet.com/2019/06/cornos-em-girafas.jpg" alt="girafa,animal,amarelo" title="girafa" width="40%"> 
 
+		</div>
+
+
+
+	</main>
+		<br>			
+		
+	
+
+	
+		
+		
+		<div id="banner">
+			<!--<button class="btslider" onclick="troca(-1)"> < </button>
+			<div id="dvload">
+				<div id="dvbarra"></div>
+			</div>
+			<button class="btslider" onclick="troca(1)"> > </button>-->
+
+
+		</div>
+
+		<div class="footerlinha">
 
 		</div>
 		
-		<br><br>
+		
 
 		
-	<div id="mapa"> 
-		<p>Clique no link para saber mais</p>
-
-		<p><a href="https://pt.wikipedia.org/wiki/Girafa" target="_blank">Ir para a página sobre girafas na wikipedia</a></p>
-
-
-	</div>
+	
 
 	<footer>Girafex &copy;2021</footer>
 </body>
